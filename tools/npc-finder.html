@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blox Fruits NPC Finder by Island - Locate Quest Givers & Merchants</title>
+    <meta name="description" content="Find NPCs across all Blox Fruits islands quickly. Locate quest givers, merchants, trainers, and special NPCs with our comprehensive island-based finder tool.">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Blox Fruits NPC Finder Tool">
+    <meta property="og:description" content="Locate NPCs across different islands quickly. Find quest givers, merchants, and trainers efficiently.">
+    <meta property="og:type" content="website">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="../style.css" rel="stylesheet" type="text/css" />
+    <link rel="canonical" href="https://bloxfruitscalculator.site/tools/npc-finder.html">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <i class="fas fa-calculator text-warning me-2"></i>Blox Fruits Calculator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../tools.html">Tools</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../blogs.html">Guides</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+
+      <div id="header-placeholder"></div>
+
+
+    <!-- Main Content -->
+    <main class="hero-section">
+        <div class="container">
+            <div class="calculator-container">
+                <div class="calculator-header" style="color: black;">
+                    <h1><i class="fas fa-search-location text-primary me-3 "></i>NPC Finder by Island</h1>
+                    <p class="lead">Locate NPCs across all Blox Fruits islands quickly and efficiently. Find quest givers, merchants, trainers, and special NPCs with precise location data.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label for="islandSelect" class="form-label"><i class="fas fa-map me-2"></i>Select Island</label>
+                            <select class="form-control" id="islandSelect">
+                                <option value="">Choose an Island...</option>
+                                <option value="starter">Starter Island</option>
+                                <option value="jungle">Jungle</option>
+                                <option value="pirate-village">Pirate Village</option>
+                                <option value="desert">Desert</option>
+                                <option value="frozen-village">Frozen Village</option>
+                                <option value="sky-island">Sky Island</option>
+                                <option value="prison">Prison</option>
+                                <option value="colosseum">Colosseum</option>
+                                <option value="magma-village">Magma Village</option>
+                                <option value="underwater-city">Underwater City</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="npcType" class="form-label"><i class="fas fa-user me-2"></i>NPC Type</label>
+                            <select class="form-control" id="npcType">
+                                <option value="">All Types</option>
+                                <option value="quest">Quest Giver</option>
+                                <option value="merchant">Merchant</option>
+                                <option value="trainer">Trainer</option>
+                                <option value="special">Special NPC</option>
+                                <option value="boss">Boss</option>
+                            </select>
+                        </div>
+
+                        <button onclick="findNPCs()" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-search me-2"></i>Find NPCs
+                        </button>
+                    </div>
+
+                    <div class="col-lg-6" >
+                        <div id="npcResults" class="result-display" >
+                            <h4 ><i class="fas fa-users me-2"></i>NPCs Found</h4>
+                            <div id="npcList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Educational Content -->
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3><i class="fas fa-map-marked-alt text-primary me-2"></i>Island Navigation Guide</h3>
+                    <p>Master island navigation and NPC location techniques for efficient quest completion and resource management:</p>
+                    <p>Each island in Blox Fruits contains unique NPCs with specific functions and locations. Understanding island layouts and NPC positions is crucial for efficient gameplay progression and quest optimization.</p>
+                    <p>Use landmarks, terrain features, and building locations to quickly navigate to specific NPCs. Many NPCs have fixed positions, while others may move or have specific spawn conditions based on player level or story progression.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-handshake text-success me-2"></i>NPC Interaction Strategies</h3>
+                    <p>Optimize your NPC interactions for maximum efficiency in quest completion and resource acquisition:</p>
+                    <p>Different NPC types serve distinct functions - quest givers provide missions and experience, merchants offer items and upgrades, trainers unlock abilities, and special NPCs provide unique services or information.</p>
+                    <p>Plan your NPC visit routes to minimize travel time and maximize quest efficiency. Some NPCs have level requirements or prerequisites, so understanding these conditions helps optimize progression timing.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-clock text-info me-2"></i>Time-Based NPC Availability</h3>
+                    <p>Understanding NPC spawn patterns and availability windows for strategic interaction planning:</p>
+                    <p>Some NPCs appear only during specific conditions, events, or time periods. Boss NPCs often have respawn timers, while event NPCs may appear during limited-time occasions.</p>
+                    <p>Track NPC availability patterns and plan your gameplay sessions around important NPC interactions, especially for time-sensitive quests or rare merchant inventory rotations.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-star text-warning me-2"></i>Rare & Special NPCs</h3>
+                    <p>Locate and interact with rare NPCs that provide unique rewards, abilities, and progression opportunities:</p>
+                    <p>Special NPCs often require specific conditions to appear or interact with. These may include level requirements, item prerequisites, or completion of certain storyline events.</p>
+                    <p>Document your interactions with rare NPCs and their requirements to help other players and optimize future character playthroughs with efficient rare NPC location strategies.</p>
+                </div>
+            </div>
+
+            <!-- Related Tools -->
+            <section class="mt-5">
+                <h2 class="text-center mb-4 text-primary">Related Blox Fruits Tools</h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <a href="level-calculator.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-chart-line me-2"></i>Level Calculator
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="daily-quest-generator.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-tasks me-2"></i>Quest Generator
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="../tools.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-tools me-2"></i>All Tools
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold text-primary">Blox Fruits Calculator</h5>
+                    <p>Your ultimate destination for Blox Fruits gaming tools, calculators, and strategic guides.</p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="fw-bold">Popular Tools</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="race-randomizer.html" class="text-light-50">Race Randomizer</a></li>
+                        <li><a href="fruit-spawn-timer.html" class="text-light-50">Fruit Timer</a></li>
+                        <li><a href="level-calculator.html" class="text-light-50">Level Calculator</a></li>
+                        <li><a href="trading-value-estimator.html" class="text-light-50">Trading Estimator</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="fw-bold">Pages</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="../about.html" class="text-light-50">About</a></li>
+                        <li><a href="../contact.html" class="text-light-50">Contact</a></li>
+                        <li><a href="../privacy-policy.html" class="text-light-50">Privacy</a></li>
+                        <li><a href="../terms-and-conditions.html" class="text-light-50">Terms</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold">Stay Updated</h6>
+                    <p>Get the latest tool updates and gaming strategies.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-primary me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-primary me-3"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-primary"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Blox Fruits Calculator. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../sitemap.xml" class="text-light-50 me-3">Sitemap</a>
+                    <a href="../robots.txt" class="text-light-50">Robots</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function findNPCs() {
+            const island = document.getElementById('islandSelect').value;
+            const npcType = document.getElementById('npcType').value;
+            const resultsDiv = document.getElementById('npcResults');
+            const listDiv = document.getElementById('npcList');
+            
+            if (!island) {
+                alert('Please select an island first!');
+                return;
+            }
+            
+            // Mock NPC data
+            const npcs = {
+                'starter': [
+                    { name: 'Cryptid', type: 'quest', location: 'Near spawn point' },
+                    { name: 'Boat Dealer', type: 'merchant', location: 'Dock area' },
+                    { name: 'Weapon Shop', type: 'merchant', location: 'Central building' }
+                ],
+                'jungle': [
+                    { name: 'Gorilla King', type: 'boss', location: 'Jungle center' },
+                    { name: 'Quest Giver', type: 'quest', location: 'Village entrance' }
+                ]
+            };
+            
+            const islandNPCs = npcs[island] || [];
+            const filteredNPCs = npcType ? islandNPCs.filter(npc => npc.type === npcType) : islandNPCs;
+            
+            if (filteredNPCs.length > 0) {
+                listDiv.innerHTML = filteredNPCs.map(npc => 
+                    `<div class="mb-2"><strong>${npc.name}</strong> (${npc.type}) - ${npc.location}</div>`
+                ).join('');
+                resultsDiv.style.display = 'block';
+            } else {
+                listDiv.innerHTML = '<div>No NPCs found matching your criteria.</div>';
+                resultsDiv.style.display = 'block';
+            }
+        }
+    </script>
+        <script src="../script.js"></script>
+
+</body>
+</html>

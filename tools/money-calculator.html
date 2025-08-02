@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blox Fruits Money Calculator - Earnings & Expense Planner</title>
+    <meta name="description" content="Calculate Blox Fruits money, earnings, and expenses. Plan your Beli spending, quest rewards, and financial progression with our comprehensive calculator.">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Blox Fruits Money Calculator Tool">
+    <meta property="og:description" content="Calculate earnings, expenses, and financial planning for optimal Blox Fruits progression.">
+    <meta property="og:type" content="website">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="../style.css" rel="stylesheet" type="text/css" />
+    <link rel="canonical" href="https://bloxfruitscalculator.site/tools/money-calculator.html">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <i class="fas fa-calculator text-warning me-2"></i>Blox Fruits Calculator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../tools.html">Tools</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../blogs.html">Guides</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+
+      <div id="header-placeholder"></div>
+
+
+    <!-- Main Content -->
+    <main class="py-5">
+        <div class="container">
+            <!-- Calculator Section -->
+            <div class="calculator-container">
+                <div class="calculator-header">
+                    <h1><i class="fas fa-coins text-primary me-3"></i>Blox Fruits Money Calculator</h1>
+                    <p class="lead">Calculate earnings, expenses, and financial planning for optimal character progression and strategic purchases.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Income Sources</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="questRewards" class="form-label">Quest Rewards (per hour)</label>
+                                    <input type="number" class="form-control" id="questRewards" value="50000" placeholder="Enter Beli per hour from quests">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="npcKills" class="form-label">NPC Farming (per hour)</label>
+                                    <input type="number" class="form-control" id="npcKills" value="30000" placeholder="Enter Beli per hour from NPCs">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="bossRewards" class="form-label">Boss Rewards (per kill)</label>
+                                    <input type="number" class="form-control" id="bossRewards" value="100000" placeholder="Enter Beli per boss kill">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="bossKillsPerHour" class="form-label">Boss Kills per Hour</label>
+                                    <input type="number" class="form-control" id="bossKillsPerHour" value="2" placeholder="Number of bosses per hour">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mb-4">
+                        <div class="card">
+                            <div class="card-header bg-danger text-white">
+                                <h5 class="mb-0"><i class="fas fa-minus-circle me-2"></i>Expenses</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="fruitCost" class="form-label">Fruit Purchase</label>
+                                    <input type="number" class="form-control" id="fruitCost" value="0" placeholder="Cost of desired fruit">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="weaponUpgrade" class="form-label">Weapon Upgrades</label>
+                                    <input type="number" class="form-control" id="weaponUpgrade" value="0" placeholder="Sword/Gun upgrade costs">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="accessoryCost" class="form-label">Accessories</label>
+                                    <input type="number" class="form-control" id="accessoryCost" value="0" placeholder="Accessory purchase costs">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="miscExpenses" class="form-label">Miscellaneous</label>
+                                    <input type="number" class="form-control" id="miscExpenses" value="0" placeholder="Other expenses">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0"><i class="fas fa-chart-pie me-2"></i>Financial Summary</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row text-center">
+                                    <div class="col-md-3 mb-3">
+                                        <div class="border rounded p-3">
+                                            <h6 class="text-success">Hourly Income</h6>
+                                            <div id="hourlyIncome" class="h4 text-success">₿0</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <div class="border rounded p-3">
+                                            <h6 class="text-danger">Total Expenses</h6>
+                                            <div id="totalExpenses" class="h4 text-danger">₿0</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <div class="border rounded p-3">
+                                            <h6 class="text-primary">Time Needed</h6>
+                                            <div id="timeNeeded" class="h4 text-primary">0 hours</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <div class="border rounded p-3">
+                                            <h6 class="text-info">Daily Progress</h6>
+                                            <div id="dailyProgress" class="h4 text-info">₿0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <button id="calculateBtn" class="btn btn-primary btn-lg w-100">
+                                        <i class="fas fa-calculator me-2"></i>Calculate Financial Plan
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="content-grid mt-5">
+                <div class="content-box">
+                    <h3><i class="fas fa-coins text-primary me-2"></i>Beli Income Sources</h3>
+                    <p>Understanding the most efficient money-making methods in Blox Fruits for optimal financial progression:</p>
+                    <ul>
+                        <li><strong>Quest Farming:</strong> Consistent income through NPC quest completion</li>
+                        <li><strong>Boss Hunting:</strong> High-value targets with substantial Beli rewards</li>
+                        <li><strong>NPC Grinding:</strong> Steady income from enemy elimination</li>
+                        <li><strong>Fruit Trading:</strong> Buy low, sell high for profit margins</li>
+                        <li><strong>Raid Participation:</strong> Fragment conversion and reward systems</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-chart-line text-success me-2"></i>Money Making Strategies</h3>
+                    <p>Advanced techniques for maximizing Beli income across different gameplay phases and character levels:</p>
+                    <p>Early game players should focus on quest completion and NPC farming for steady income growth. Mid-game progression benefits from boss hunting and efficient grinding routes. Late-game players can optimize through raid participation and strategic fruit trading.</p>
+                    <p>Combine multiple income sources for maximum efficiency, balancing time investment with reward potential across different activities and gameplay modes.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-shopping-cart text-warning me-2"></i>Essential Purchases Guide</h3>
+                    <p>Priority spending recommendations for optimal character progression and strategic resource allocation:</p>
+                    <ul>
+                        <li><strong>Devil Fruits:</strong> High-priority purchases for combat effectiveness</li>
+                        <li><strong>Sword Upgrades:</strong> Weapon enhancement for damage optimization</li>
+                        <li><strong>Fighting Styles:</strong> Combat skill expansion and versatility</li>
+                        <li><strong>Accessories:</strong> Stat boosts and special abilities</li>
+                        <li><strong>Race Rerolls:</strong> Character optimization and ability enhancement</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-piggy-bank text-info me-2"></i>Budget Planning Tips</h3>
+                    <p>Financial management strategies for long-term progression and efficient resource utilization:</p>
+                    <p>Set realistic savings goals based on your gameplay time and preferred activities. Track income versus expenses to identify optimization opportunities. Plan major purchases around your progression milestones.</p>
+                    <p>Consider opportunity costs when making purchases - sometimes saving for a major upgrade provides better long-term value than multiple smaller purchases.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-exchange-alt text-secondary me-2"></i>Trading Economics</h3>
+                    <p>Understanding market dynamics and trading strategies for profit maximization in Blox Fruits economy:</p>
+                    <ul>
+                        <li>Monitor fruit market trends and pricing fluctuations</li>
+                        <li>Identify undervalued items for strategic purchases</li>
+                        <li>Build trading relationships for better deals</li>
+                        <li>Time purchases around server events and updates</li>
+                        <li>Diversify trading portfolio for risk management</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-clock text-primary me-2"></i>Time Investment Analysis</h3>
+                    <p>Optimize your grinding efficiency with time-based financial planning and activity prioritization:</p>
+                    <p>Calculate Beli per hour for different activities to focus on the most profitable methods. Factor in your available playtime when setting financial goals. Balance active grinding with passive income opportunities.</p>
+                    <p>Consider using multiple characters or servers to maximize income potential within your time constraints.</p>
+                </div>
+            </div>
+
+            <!-- Related Tools -->
+            <section class="mt-5">
+                <h2 class="text-center mb-4 text-primary">Related Blox Fruits Tools</h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <a href="level-calculator.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-chart-line me-2"></i>Level Calculator
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="trading-value-estimator.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-exchange-alt me-2"></i>Trading Estimator
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="../tools.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-tools me-2"></i>All Tools
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold text-primary">Blox Fruits Calculator</h5>
+                    <p>Your ultimate destination for Blox Fruits gaming tools, calculators, and strategic guides.</p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="fw-bold">Popular Tools</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="race-randomizer.html" class="text-light-50">Race Randomizer</a></li>
+                        <li><a href="fruit-spawn-timer.html" class="text-light-50">Fruit Timer</a></li>
+                        <li><a href="level-calculator.html" class="text-light-50">Level Calculator</a></li>
+                        <li><a href="trading-value-estimator.html" class="text-light-50">Trading Estimator</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="fw-bold">Pages</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="../about.html" class="text-light-50">About</a></li>
+                        <li><a href="../contact.html" class="text-light-50">Contact</a></li>
+                        <li><a href="../privacy-policy.html" class="text-light-50">Privacy</a></li>
+                        <li><a href="../terms-and-conditions.html" class="text-light-50">Terms</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold">Stay Updated</h6>
+                    <p>Get the latest tool updates and gaming strategies.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-primary me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-primary me-3"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-primary"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Blox Fruits Calculator. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../sitemap.xml" class="text-light-50 me-3">Sitemap</a>
+                    <a href="../robots.txt" class="text-light-50">Robots</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function formatBeli(amount) {
+            return '₿' + amount.toLocaleString();
+        }
+
+        function calculateMoney() {
+            // Get income values
+            const questRewards = parseInt(document.getElementById('questRewards').value) || 0;
+            const npcKills = parseInt(document.getElementById('npcKills').value) || 0;
+            const bossRewards = parseInt(document.getElementById('bossRewards').value) || 0;
+            const bossKillsPerHour = parseInt(document.getElementById('bossKillsPerHour').value) || 0;
+
+            // Get expense values
+            const fruitCost = parseInt(document.getElementById('fruitCost').value) || 0;
+            const weaponUpgrade = parseInt(document.getElementById('weaponUpgrade').value) || 0;
+            const accessoryCost = parseInt(document.getElementById('accessoryCost').value) || 0;
+            const miscExpenses = parseInt(document.getElementById('miscExpenses').value) || 0;
+
+            // Calculate totals
+            const hourlyIncome = questRewards + npcKills + (bossRewards * bossKillsPerHour);
+            const totalExpenses = fruitCost + weaponUpgrade + accessoryCost + miscExpenses;
+            const timeNeeded = hourlyIncome > 0 ? (totalExpenses / hourlyIncome) : 0;
+            const dailyProgress = hourlyIncome * 8; // Assuming 8 hours of play per day
+
+            // Update display
+            document.getElementById('hourlyIncome').textContent = formatBeli(hourlyIncome);
+            document.getElementById('totalExpenses').textContent = formatBeli(totalExpenses);
+            document.getElementById('timeNeeded').textContent = timeNeeded.toFixed(1) + ' hours';
+            document.getElementById('dailyProgress').textContent = formatBeli(dailyProgress);
+        }
+
+        // Event listeners
+        document.getElementById('calculateBtn').addEventListener('click', calculateMoney);
+
+        // Auto-calculate on input change
+        const inputs = ['questRewards', 'npcKills', 'bossRewards', 'bossKillsPerHour', 'fruitCost', 'weaponUpgrade', 'accessoryCost', 'miscExpenses'];
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', calculateMoney);
+        });
+
+        // Initial calculation
+        calculateMoney();
+    </script>
+        <script src="../script.js"></script>
+
+</body>
+</html>

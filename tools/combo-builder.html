@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blox Fruits Combo Builder - PvP Combat Optimizer</title>
+    <meta name="description" content="Create and optimize Blox Fruits combat combos for PvP battles. Build devastating combinations with precise timing and strategic move sequences.">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Blox Fruits Combo Builder Tool">
+    <meta property="og:description" content="Create and optimize combat combos for PvP battles with devastating combinations and precise timing.">
+    <meta property="og:type" content="website">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="../style.css" rel="stylesheet" type="text/css" />
+    <link rel="canonical" href="https://bloxfruitscalculator.site/tools/combo-builder.html">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <i class="fas fa-calculator text-warning me-2"></i>Blox Fruits Calculator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../tools.html">Tools</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../blogs.html">Guides</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+
+      <div id="header-placeholder"></div>
+
+
+    <!-- Main Content -->
+    <main class="py-5">
+        <div class="container">
+            <!-- Calculator Section -->
+            <div class="calculator-container">
+                <div class="calculator-header">
+                    <h1><i class="fas fa-fist-raised text-primary me-3"></i>Blox Fruits Combo Builder</h1>
+                    <p class="lead">Create and optimize combat combos for PvP battles. Build devastating combinations with precise timing and strategic planning.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8 mb-4">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Build Your Combo</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="moveCategory" class="form-label">Move Category</label>
+                                        <select class="form-control" id="moveCategory">
+                                            <option value="fruit">Fruit Moves</option>
+                                            <option value="sword">Sword Moves</option>
+                                            <option value="gun">Gun Moves</option>
+                                            <option value="fighting">Fighting Style</option>
+                                            <option value="race">Race Abilities</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="specificMove" class="form-label">Specific Move</label>
+                                        <select class="form-control" id="specificMove">
+                                            <option value="">Select a move</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="moveDamage" class="form-label">Damage</label>
+                                        <input type="number" class="form-control" id="moveDamage" placeholder="Move damage">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="moveCooldown" class="form-label">Cooldown (seconds)</label>
+                                        <input type="number" class="form-control" id="moveCooldown" placeholder="Move cooldown">
+                                    </div>
+                                </div>
+                                <div class="d-grid">
+                                    <button id="addMoveBtn" class="btn btn-success">
+                                        <i class="fas fa-plus me-2"></i>Add Move to Combo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Combo Stats</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <h6>Total Damage</h6>
+                                    <div id="totalDamage" class="h4 text-danger">0</div>
+                                </div>
+                                <div class="mb-3">
+                                    <h6>Combo Length</h6>
+                                    <div id="comboLength" class="h5 text-primary">0 moves</div>
+                                </div>
+                                <div class="mb-3">
+                                    <h6>Execution Time</h6>
+                                    <div id="executionTime" class="h5 text-warning">0s</div>
+                                </div>
+                                <div class="mb-3">
+                                    <h6>DPS</h6>
+                                    <div id="dpsValue" class="h5 text-info">0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Combo Sequence -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0"><i class="fas fa-list-ol me-2"></i>Combo Sequence</h5>
+                                <button id="clearCombo" class="btn btn-outline-dark btn-sm">
+                                    <i class="fas fa-trash me-1"></i>Clear All
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div id="comboSequence" class="combo-sequence">
+                                    <div class="text-center text-muted">
+                                        <i class="fas fa-info-circle me-2"></i>Add moves above to build your combo sequence.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="content-grid mt-5">
+                <div class="content-box">
+                    <h3><i class="fas fa-fist-raised text-primary me-2"></i>Combat Combo Fundamentals</h3>
+                    <p>Master the essential principles of effective combo building for competitive PvP combat and strategic advantage:</p>
+                    <ul>
+                        <li><strong>Timing Precision:</strong> Perfect timing between moves for maximum effectiveness</li>
+                        <li><strong>Damage Optimization:</strong> Sequence moves for highest total damage output</li>
+                        <li><strong>Cooldown Management:</strong> Plan combos around ability cooldowns</li>
+                        <li><strong>Stun Chaining:</strong> Link stunning moves for extended control</li>
+                        <li><strong>Resource Efficiency:</strong> Balance power with energy consumption</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-lightning text-warning me-2"></i>Advanced Combo Techniques</h3>
+                    <p>Professional-level combo strategies for competitive play and advanced PvP scenarios:</p>
+                    <p>Master animation canceling to reduce combo execution time. Learn optimal spacing for each move type. Practice timing variations for unpredictable combat patterns. Develop situational combos for different opponent types.</p>
+                    <p>Advanced players should focus on mix-ups and combo extensions that adapt to opponent responses and defensive options.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-shield-alt text-success me-2"></i>Defensive Considerations</h3>
+                    <p>Understanding defensive mechanics and counter-strategies when building offensive combo sequences:</p>
+                    <ul>
+                        <li><strong>Escape Options:</strong> Account for opponent escape abilities</li>
+                        <li><strong>Counter Attacks:</strong> Plan for defensive retaliation</li>
+                        <li><strong>Positioning:</strong> Consider spatial requirements for combo execution</li>
+                        <li><strong>Energy Management:</strong> Reserve energy for defensive options</li>
+                        <li><strong>Adaptation:</strong> Modify combos based on opponent behavior</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-chart-line text-info me-2"></i>Combo Optimization Metrics</h3>
+                    <p>Key performance indicators for evaluating and improving combat combo effectiveness:</p>
+                    <p>Damage per second (DPS) measures combo efficiency. Total damage indicates combo power. Execution time affects combo viability in fast-paced combat. Success rate reflects combo reliability under pressure.</p>
+                    <p>Balance these metrics based on your playstyle and competitive goals. High-risk, high-reward combos suit aggressive players, while consistent, moderate-damage combos work for defensive strategies.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-users text-secondary me-2"></i>Team Combat Integration</h3>
+                    <p>Coordinating individual combos with team strategies for group PvP scenarios and crew battles:</p>
+                    <ul>
+                        <li>Synchronize combo timing with teammates</li>
+                        <li>Plan role-specific combo contributions</li>
+                        <li>Develop setup and follow-up combinations</li>
+                        <li>Coordinate crowd control and damage phases</li>
+                        <li>Practice team combo execution and timing</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-trophy text-primary me-2"></i>Meta Combo Analysis</h3>
+                    <p>Understanding current meta trends and adapting combo strategies for competitive advantage:</p>
+                    <p>Stay updated on popular fruit and weapon combinations in the current meta. Analyze successful combos from top players and competitive matches. Adapt proven strategies to your playstyle and available resources.</p>
+                    <p>Develop counter-combos for popular meta strategies while maintaining your own unique approach to combat scenarios.</p>
+                </div>
+            </div>
+
+            <!-- Related Tools -->
+            <section class="mt-5">
+                <h2 class="text-center mb-4 text-primary">Related Blox Fruits Tools</h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <a href="race-randomizer.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-dice me-2"></i>Race Randomizer
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="sword-upgrade.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-sword me-2"></i>Sword Upgrade
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="../tools.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-tools me-2"></i>All Tools
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold text-primary">Blox Fruits Calculator</h5>
+                    <p>Your ultimate destination for Blox Fruits gaming tools, calculators, and strategic guides.</p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="fw-bold">Popular Tools</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="race-randomizer.html" class="text-light-50">Race Randomizer</a></li>
+                        <li><a href="fruit-spawn-timer.html" class="text-light-50">Fruit Timer</a></li>
+                        <li><a href="level-calculator.html" class="text-light-50">Level Calculator</a></li>
+                        <li><a href="trading-value-estimator.html" class="text-light-50">Trading Estimator</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="fw-bold">Pages</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="../about.html" class="text-light-50">About</a></li>
+                        <li><a href="../contact.html" class="text-light-50">Contact</a></li>
+                        <li><a href="../privacy-policy.html" class="text-light-50">Privacy</a></li>
+                        <li><a href="../terms-and-conditions.html" class="text-light-50">Terms</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold">Stay Updated</h6>
+                    <p>Get the latest tool updates and gaming strategies.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-primary me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-primary me-3"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-primary"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Blox Fruits Calculator. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../sitemap.xml" class="text-light-50 me-3">Sitemap</a>
+                    <a href="../robots.txt" class="text-light-50">Robots</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const moveDatabase = {
+            fruit: {
+                'flame-fire-fist': { name: 'Fire Fist', damage: 2500, cooldown: 8 },
+                'flame-fire-pillar': { name: 'Fire Pillar', damage: 3200, cooldown: 12 },
+                'ice-ice-age': { name: 'Ice Age', damage: 4000, cooldown: 15 },
+                'ice-glacial-surge': { name: 'Glacial Surge', damage: 2800, cooldown: 10 },
+                'light-light-ray': { name: 'Light Ray', damage: 3500, cooldown: 6 },
+                'light-divine-arrow': { name: 'Divine Arrow', damage: 4200, cooldown: 14 },
+                'dark-liberation': { name: 'Liberation', damage: 5000, cooldown: 20 },
+                'magma-meteor': { name: 'Meteor', damage: 4500, cooldown: 18 }
+            },
+            sword: {
+                'sword-deadly-slash': { name: 'Deadly Slash', damage: 1800, cooldown: 5 },
+                'sword-air-slash': { name: 'Air Slash', damage: 2200, cooldown: 7 },
+                'sword-triple-slash': { name: 'Triple Slash', damage: 2800, cooldown: 9 },
+                'sword-dragon-breath': { name: 'Dragon Breath', damage: 3500, cooldown: 12 }
+            },
+            gun: {
+                'gun-bullet-storm': { name: 'Bullet Storm', damage: 1500, cooldown: 6 },
+                'gun-explosive-shot': { name: 'Explosive Shot', damage: 2400, cooldown: 8 },
+                'gun-sniper-shot': { name: 'Sniper Shot', damage: 3000, cooldown: 10 }
+            },
+            fighting: {
+                'combat-iron-body': { name: 'Iron Body', damage: 1200, cooldown: 4 },
+                'combat-soru': { name: 'Soru', damage: 800, cooldown: 3 },
+                'combat-tempest-kick': { name: 'Tempest Kick', damage: 2000, cooldown: 7 },
+                'superhuman-thunderclap': { name: 'Thunderclap', damage: 2800, cooldown: 9 }
+            },
+            race: {
+                'human-last-resort': { name: 'Last Resort', damage: 0, cooldown: 60 },
+                'shark-water-body': { name: 'Water Body', damage: 1500, cooldown: 15 },
+                'angel-heavenly-blood': { name: 'Heavenly Blood', damage: 2000, cooldown: 20 },
+                'rabbit-agility': { name: 'Agility', damage: 0, cooldown: 12 }
+            }
+        };
+
+        let comboMoves = [];
+
+        function updateMoveOptions() {
+            const category = document.getElementById('moveCategory').value;
+            const moveSelect = document.getElementById('specificMove');
+            
+            moveSelect.innerHTML = '<option value="">Select a move</option>';
+            
+            if (moveDatabase[category]) {
+                Object.entries(moveDatabase[category]).forEach(([key, move]) => {
+                    const option = document.createElement('option');
+                    option.value = key;
+                    option.textContent = move.name;
+                    moveSelect.appendChild(option);
+                });
+            }
+        }
+
+        function updateMoveDetails() {
+            const category = document.getElementById('moveCategory').value;
+            const moveKey = document.getElementById('specificMove').value;
+            
+            if (moveKey && moveDatabase[category] && moveDatabase[category][moveKey]) {
+                const move = moveDatabase[category][moveKey];
+                document.getElementById('moveDamage').value = move.damage;
+                document.getElementById('moveCooldown').value = move.cooldown;
+            }
+        }
+
+        function addMove() {
+            const category = document.getElementById('moveCategory').value;
+            const moveKey = document.getElementById('specificMove').value;
+            const damage = parseInt(document.getElementById('moveDamage').value) || 0;
+            const cooldown = parseInt(document.getElementById('moveCooldown').value) || 0;
+
+            if (!moveKey || damage === 0) {
+                alert('Please select a move and enter damage value');
+                return;
+            }
+
+            const moveName = moveDatabase[category][moveKey].name;
+            
+            const move = {
+                id: Date.now(),
+                name: moveName,
+                category: category,
+                damage: damage,
+                cooldown: cooldown
+            };
+
+            comboMoves.push(move);
+            updateComboDisplay();
+            updateComboStats();
+
+            // Clear form
+            document.getElementById('specificMove').value = '';
+            document.getElementById('moveDamage').value = '';
+            document.getElementById('moveCooldown').value = '';
+        }
+
+        function removeMove(id) {
+            comboMoves = comboMoves.filter(move => move.id !== id);
+            updateComboDisplay();
+            updateComboStats();
+        }
+
+        function clearCombo() {
+            if (confirm('Clear all moves from combo?')) {
+                comboMoves = [];
+                updateComboDisplay();
+                updateComboStats();
+            }
+        }
+
+        function updateComboDisplay() {
+            const container = document.getElementById('comboSequence');
+            
+            if (comboMoves.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center text-muted">
+                        <i class="fas fa-info-circle me-2"></i>Add moves above to build your combo sequence.
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = comboMoves.map((move, index) => {
+                const categoryColors = {
+                    fruit: 'primary',
+                    sword: 'warning',
+                    gun: 'danger',
+                    fighting: 'success',
+                    race: 'info'
+                };
+
+                return `
+                    <div class="combo-move d-flex align-items-center justify-content-between mb-2 p-3 border rounded">
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-${categoryColors[move.category]} me-3">${index + 1}</span>
+                            <div>
+                                <strong>${move.name}</strong>
+                                <div class="small text-muted">
+                                    ${move.damage} damage • ${move.cooldown}s cooldown
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-danger btn-sm" onclick="removeMove(${move.id})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateComboStats() {
+            const totalDamage = comboMoves.reduce((sum, move) => sum + move.damage, 0);
+            const comboLength = comboMoves.length;
+            const executionTime = comboMoves.reduce((sum, move) => sum + move.cooldown, 0);
+            const dps = executionTime > 0 ? Math.round(totalDamage / executionTime) : 0;
+
+            document.getElementById('totalDamage').textContent = totalDamage.toLocaleString();
+            document.getElementById('comboLength').textContent = `${comboLength} moves`;
+            document.getElementById('executionTime').textContent = `${executionTime}s`;
+            document.getElementById('dpsValue').textContent = dps.toLocaleString();
+        }
+
+        // Event listeners
+        document.getElementById('moveCategory').addEventListener('change', updateMoveOptions);
+        document.getElementById('specificMove').addEventListener('change', updateMoveDetails);
+        document.getElementById('addMoveBtn').addEventListener('click', addMove);
+        document.getElementById('clearCombo').addEventListener('click', clearCombo);
+
+        // Initialize
+        updateMoveOptions();
+        updateComboStats();
+    </script>
+        <script src="../script.js"></script>
+
+</body>
+</html>

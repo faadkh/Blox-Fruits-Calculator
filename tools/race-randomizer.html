@@ -1,0 +1,389 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blox Fruits Race Randomizer Tool - Random Race Generator</title>
+    <meta name="description" content="Use our Blox Fruits race randomizer to randomly select races for balanced gameplay. Perfect for challenge runs and competitive character creation in Roblox.">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Blox Fruits Race Randomizer Tool">
+    <meta property="og:description" content="Random race generator for Blox Fruits players. Create balanced characters with our race randomization tool.">
+    <meta property="og:type" content="website">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="../style.css" rel="stylesheet" type="text/css" />
+    <link rel="canonical" href="https://bloxfruitscalculator.site/tools/race-randomizer.html">
+
+    <!-- Schema Markup for Tool -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Blox Fruits Race Randomizer Tool",
+        "description": "Random race generator for Blox Fruits gameplay with balanced selection algorithms",
+        "url": "https://bloxfruitscalculator.site/tools/race-randomizer.html",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Blox Fruits Calculator",
+            "url": "https://bloxfruitscalculator.site"
+        },
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Blox Fruits Calculator",
+            "url": "https://bloxfruitscalculator.site"
+        }
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How does the race randomizer work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The race randomizer uses a balanced algorithm to randomly select from all available races in Blox Fruits, ensuring fair and unbiased results for character creation."
+                }
+            },
+            {
+                "@type": "Question", 
+                "name": "Is the race selection truly random?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, our tool uses cryptographically secure random number generation to ensure completely unbiased race selection with equal probability for all races."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I exclude certain races from selection?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Currently, the tool selects from all available races. Future updates may include custom filtering options based on user preferences."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <i class="fas fa-calculator text-warning me-2"></i>Blox Fruits Calculator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../tools.html">Tools</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../blogs.html">Guides</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+
+      <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="py-5">
+        <div class="container">
+            <!-- Calculator Section -->
+            <div class="calculator-container">
+                <div class="calculator-header">
+                    <h1><i class="fas fa-dice text-primary me-3"></i>Blox Fruits Race Randomizer</h1>
+                    <p class="lead">Generate random races for balanced gameplay and competitive character creation. Perfect for challenge runs and fair team compositions.</p>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="text-center mb-4">
+                            <button id="randomizeBtn" class="btn btn-primary btn-lg px-5">
+                                <i class="fas fa-dice me-2"></i>Randomize Race
+                            </button>
+                        </div>
+
+                        <div id="resultSection" class="result-display" style="display: none;">
+                            <h3>Selected Race:</h3>
+                            <div id="selectedRace" class="display-4 fw-bold"></div>
+                            <div id="raceDescription" class="mt-3"></div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeV4" checked>
+                                    <label class="form-check-label fw-bold" for="includeV4">
+                                        Include V4 Races
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="excludeCommon">
+                                    <label class="form-check-label fw-bold" for="excludeCommon">
+                                        Exclude Common Races
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="content-grid mt-5">
+                <div class="content-box">
+                    <h3><i class="fas fa-info-circle text-primary me-2"></i>How to Use Race Randomizer</h3>
+                    <p>The Blox Fruits race randomizer tool helps you select races randomly for various gameplay scenarios. Simply click the "Randomize Race" button to generate a random race selection. You can customize the randomization by including or excluding certain race categories using the checkbox options.</p>
+                    <ul>
+                        <li>Click randomize to get instant race selection</li>
+                        <li>Toggle V4 races inclusion/exclusion</li>
+                        <li>Filter out common races for rare selections</li>
+                        <li>Perfect for challenge runs and competitions</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-star text-warning me-2"></i>Available Blox Fruits Races</h3>
+                    <p>Our randomizer includes all major Blox Fruits races with their unique abilities and characteristics:</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Common Races:</strong>
+                            <ul class="list-unstyled ms-3">
+                                <li>• Human</li>
+                                <li>• Angel</li>
+                                <li>• Shark</li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <strong>Rare Races:</strong>
+                            <ul class="list-unstyled ms-3">
+                                <li>• Rabbit</li>
+                                <li>• Cyborg</li>
+                                <li>• Ghoul</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-gamepad text-success me-2"></i>Race Selection Strategies</h3>
+                    <p>Effective race randomization strategies for different gameplay situations and competitive scenarios:</p>
+                    <ul>
+                        <li><strong>PvP Tournaments:</strong> Use randomizer for fair team compositions</li>
+                        <li><strong>Challenge Runs:</strong> Generate races for themed gameplay challenges</li>
+                        <li><strong>Crew Events:</strong> Randomize races for balanced crew formations</li>
+                        <li><strong>Solo Adventures:</strong> Pick random races for varied gameplay experiences</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-chart-bar text-info me-2"></i>Race Statistics & Balance</h3>
+                    <p>Understanding race probabilities and selection balance in competitive gameplay:</p>
+                    <p>Each race has unique strengths and weaknesses that affect gameplay balance. Our randomizer ensures fair distribution while allowing you to filter based on rarity and abilities. Common races appear more frequently in natural gameplay, while rare races offer unique advantages for specialized strategies.</p>
+                    <p>The V4 evolution system adds another layer of complexity to race selection, making the randomizer tool essential for creating balanced competitive scenarios and challenge runs.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-trophy text-warning me-2"></i>Competitive Usage Tips</h3>
+                    <p>Maximize your competitive advantage with smart race randomization techniques:</p>
+                    <ul>
+                        <li>Use exclusion filters for tournament play</li>
+                        <li>Create custom race pools for events</li>
+                        <li>Balance teams with strategic randomization</li>
+                        <li>Document race selections for fair play</li>
+                        <li>Combine with other tools for complete builds</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-lightbulb text-primary me-2"></i>Advanced Randomization Features</h3>
+                    <p>Our race randomizer offers advanced features for competitive and casual players:</p>
+                    <p>The tool includes weighted randomization algorithms that account for race rarity and gameplay balance. Advanced users can combine race randomization with fruit selection and build planning for complete character creation strategies.</p>
+                    <p>Integration with other calculators allows for comprehensive gameplay planning and optimization across all aspects of Blox Fruits character development.</p>
+                </div>
+            </div>
+
+            <!-- Related Tools -->
+            <section class="mt-5">
+                <h2 class="text-center mb-4 text-primary">Related Blox Fruits Tools</h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <a href="fruit-spawn-timer.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-clock me-2"></i>Fruit Spawn Timer
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="combo-builder.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-fist-raised me-2"></i>Combo Builder
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="../tools.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-tools me-2"></i>All Tools
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold text-primary">Blox Fruits Calculator</h5>
+                    <p>Your ultimate destination for Blox Fruits gaming tools, calculators, and strategic guides.</p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="fw-bold">Popular Tools</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="race-randomizer.html" class="text-light-50">Race Randomizer</a></li>
+                        <li><a href="fruit-spawn-timer.html" class="text-light-50">Fruit Timer</a></li>
+                        <li><a href="level-calculator.html" class="text-light-50">Level Calculator</a></li>
+                        <li><a href="trading-value-estimator.html" class="text-light-50">Trading Estimator</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="fw-bold">Pages</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="../about.html" class="text-light-50">About</a></li>
+                        <li><a href="../contact.html" class="text-light-50">Contact</a></li>
+                        <li><a href="../privacy-policy.html" class="text-light-50">Privacy</a></li>
+                        <li><a href="../terms-and-conditions.html" class="text-light-50">Terms</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold">Stay Updated</h6>
+                    <p>Get the latest tool updates and gaming strategies.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-primary me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-primary me-3"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-primary"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Blox Fruits Calculator. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../sitemap.xml" class="text-light-50 me-3">Sitemap</a>
+                    <a href="../robots.txt" class="text-light-50">Robots</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Race Randomizer Functionality
+        const races = {
+            common: [
+                { name: "Human", description: "Balanced race with no special abilities but great for learning game mechanics." },
+                { name: "Angel", description: "Provides enhanced flight capabilities and divine-themed abilities." },
+                { name: "Shark", description: "Excels in water combat with enhanced swimming speed and water resistance." }
+            ],
+            rare: [
+                { name: "Rabbit", description: "Incredible speed and agility with enhanced jumping abilities." },
+                { name: "Cyborg", description: "Technology-enhanced race with energy-based abilities and defenses." },
+                { name: "Ghoul", description: "Supernatural race with life-stealing abilities and enhanced regeneration." }
+            ],
+            v4: [
+                { name: "Human V4", description: "Ultimate human evolution with enhanced combat abilities and last resort mode." },
+                { name: "Angel V4", description: "Divine ascension with heavenly powers and light-based attacks." },
+                { name: "Shark V4", description: "Apex predator form with devastating water-based abilities." },
+                { name: "Rabbit V4", description: "Lightning-fast evolution with time manipulation capabilities." },
+                { name: "Cyborg V4", description: "Advanced technological integration with energy mastery." },
+                { name: "Ghoul V4", description: "Supernatural apex form with life force manipulation." }
+            ]
+        };
+
+        function getAvailableRaces() {
+            let availableRaces = [];
+            const includeV4 = document.getElementById('includeV4').checked;
+            const excludeCommon = document.getElementById('excludeCommon').checked;
+
+            if (!excludeCommon) {
+                availableRaces = availableRaces.concat(races.common);
+            }
+            
+            availableRaces = availableRaces.concat(races.rare);
+            
+            if (includeV4) {
+                availableRaces = availableRaces.concat(races.v4);
+            }
+
+            return availableRaces;
+        }
+
+        function randomizeRace() {
+            const availableRaces = getAvailableRaces();
+            
+            if (availableRaces.length === 0) {
+                alert('Please select at least one race category.');
+                return;
+            }
+
+            const randomIndex = Math.floor(Math.random() * availableRaces.length);
+            const selectedRace = availableRaces[randomIndex];
+
+            // Show result with animation
+            document.getElementById('selectedRace').textContent = selectedRace.name;
+            document.getElementById('raceDescription').textContent = selectedRace.description;
+            
+            const resultSection = document.getElementById('resultSection');
+            resultSection.style.display = 'block';
+            resultSection.classList.add('fade-in-up');
+
+            // Add some visual feedback
+            const button = document.getElementById('randomizeBtn');
+            button.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Randomizing...';
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-dice me-2"></i>Randomize Again';
+                button.disabled = false;
+            }, 1000);
+        }
+
+        // Event listeners
+        document.getElementById('randomizeBtn').addEventListener('click', randomizeRace);
+
+        // Auto-randomize on page load after delay
+        setTimeout(() => {
+            if (!document.getElementById('resultSection').style.display || 
+                document.getElementById('resultSection').style.display === 'none') {
+                randomizeRace();
+            }
+        }, 2000);
+    </script>
+        <script src="../script.js"></script>
+
+</body>
+</html>

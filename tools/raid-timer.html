@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blox Fruits Raid Timer Tracker - Cooldown Calculator</title>
+    <meta name="description" content="Track Blox Fruits raid cooldowns and plan your raiding schedule. Monitor fragment farming opportunities and optimize raid timing strategies.">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Blox Fruits Raid Timer Tracker">
+    <meta property="og:description" content="Track raid cooldowns and plan raiding schedules for maximum efficiency and fragment farming.">
+    <meta property="og:type" content="website">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="../style.css" rel="stylesheet" type="text/css" />
+    <link rel="canonical" href="https://bloxfruitscalculator.site/tools/raid-timer.html">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <i class="fas fa-calculator text-warning me-2"></i>Blox Fruits Calculator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../tools.html">Tools</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../blogs.html">Guides</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+      <div id="header-placeholder"></div>
+
+
+    <!-- Main Content -->
+    <main class="py-5">
+        <div class="container">
+            <!-- Calculator Section -->
+            <div class="calculator-container">
+                <div class="calculator-header">
+                    <h1><i class="fas fa-shield-alt text-primary me-3"></i>Blox Fruits Raid Timer Tracker</h1>
+                    <p class="lead">Track raid cooldowns and plan your raiding schedule for maximum efficiency and fragment farming optimization.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0"><i class="fas fa-plus me-2"></i>Add New Raid Timer</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="raidType" class="form-label">Raid Type</label>
+                                    <select class="form-control" id="raidType">
+                                        <option value="flame">Flame Raid</option>
+                                        <option value="ice">Ice Raid</option>
+                                        <option value="quake">Quake Raid</option>
+                                        <option value="light">Light Raid</option>
+                                        <option value="dark">Dark Raid</option>
+                                        <option value="string">String Raid</option>
+                                        <option value="rumble">Rumble Raid</option>
+                                        <option value="magma">Magma Raid</option>
+                                        <option value="buddha">Buddha Raid</option>
+                                        <option value="phoenix">Phoenix Raid</option>
+                                        <option value="spider">Spider Raid</option>
+                                        <option value="portal">Portal Raid</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="completionTime" class="form-label">Completion Time</label>
+                                    <input type="datetime-local" class="form-control" id="completionTime">
+                                </div>
+                                <div class="d-grid">
+                                    <button id="addRaidBtn" class="btn btn-primary">
+                                        <i class="fas fa-plus me-2"></i>Start Raid Timer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mb-4">
+                        <div class="card">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Raid Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="alert alert-info">
+                                    <strong>Raid Cooldown:</strong> 2 hours per raid type<br>
+                                    <strong>Fragment Rewards:</strong> 250-1000 per completion<br>
+                                    <strong>Success Rate:</strong> Varies by team composition
+                                </div>
+                                <div class="quick-actions">
+                                    <button class="btn btn-outline-primary btn-sm me-2" onclick="setCurrentTime()">
+                                        <i class="fas fa-clock me-1"></i>Use Current Time
+                                    </button>
+                                    <button class="btn btn-outline-danger btn-sm" onclick="clearAllTimers()">
+                                        <i class="fas fa-trash me-1"></i>Clear All
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Raid Timers -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-warning text-dark">
+                                <h5 class="mb-0"><i class="fas fa-list me-2"></i>Active Raid Timers</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="raidTimers" class="row g-3">
+                                    <div class="col-12 text-center text-muted">
+                                        <i class="fas fa-info-circle me-2"></i>No active raid timers. Add a raid above to start tracking.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="content-grid mt-5">
+                <div class="content-box">
+                    <h3><i class="fas fa-shield-alt text-primary me-2"></i>Understanding Raid Mechanics</h3>
+                    <p>Comprehensive guide to Blox Fruits raid systems, cooldowns, and optimization strategies for fragment farming:</p>
+                    <ul>
+                        <li><strong>Cooldown System:</strong> 2-hour cooldown per specific raid type</li>
+                        <li><strong>Fragment Rewards:</strong> 250-1000 fragments based on performance</li>
+                        <li><strong>Team Requirements:</strong> 1-4 players with specific fruit requirements</li>
+                        <li><strong>Difficulty Scaling:</strong> Increases with raid tier and chip type</li>
+                        <li><strong>Success Factors:</strong> Team coordination and fruit mastery levels</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-gem text-warning me-2"></i>Fragment Farming Optimization</h3>
+                    <p>Advanced strategies for maximizing fragment collection efficiency through strategic raid timing and team coordination:</p>
+                    <p>Plan raid rotations across different fruit types to minimize downtime. Coordinate with crew members to ensure continuous raiding opportunities. Focus on higher-tier raids for better fragment rewards.</p>
+                    <p>Use the timer tracker to identify optimal raiding windows and avoid cooldown conflicts across multiple raid types.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-users text-success me-2"></i>Team Coordination Strategies</h3>
+                    <p>Effective team management and coordination techniques for successful raid completion and reward maximization:</p>
+                    <ul>
+                        <li><strong>Role Assignment:</strong> Designate specific fruit users for each role</li>
+                        <li><strong>Communication:</strong> Establish clear communication channels</li>
+                        <li><strong>Timing Coordination:</strong> Synchronize raid starts with team availability</li>
+                        <li><strong>Backup Plans:</strong> Prepare alternative strategies for failed attempts</li>
+                        <li><strong>Progress Tracking:</strong> Monitor team performance and improvement</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-chart-bar text-info me-2"></i>Raid Difficulty Analysis</h3>
+                    <p>Understanding raid difficulty tiers and success rate optimization for different raid types and team compositions:</p>
+                    <p>Each raid type has unique mechanics and difficulty levels. Lower-tier raids like Flame and Ice offer consistent success rates for beginners. Higher-tier raids like Buddha and Phoenix require advanced coordination but offer superior fragment rewards.</p>
+                    <p>Factor in team fruit mastery levels and experience when selecting raid targets. Use easier raids for practice and fragment building before attempting challenging content.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-clock text-secondary me-2"></i>Cooldown Management Tips</h3>
+                    <p>Strategic cooldown management for continuous raiding opportunities and maximum fragment efficiency:</p>
+                    <ul>
+                        <li>Stagger raid types to avoid simultaneous cooldowns</li>
+                        <li>Plan raid schedules around team availability</li>
+                        <li>Use multiple characters for extended raiding sessions</li>
+                        <li>Coordinate with different crews for varied raid access</li>
+                        <li>Track server raid availability for optimal timing</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-trophy text-primary me-2"></i>Advanced Raid Strategies</h3>
+                    <p>Professional-level raid tactics for competitive fragment farming and leaderboard positioning:</p>
+                    <p>Develop specialized raid builds optimized for specific encounters. Study boss patterns and timing for maximum damage efficiency. Create backup strategies for different team compositions and unexpected situations.</p>
+                    <p>Combine raid timer tracking with performance analysis to identify optimal raiding windows and team configurations for consistent success rates.</p>
+                </div>
+            </div>
+
+            <!-- Related Tools -->
+            <section class="mt-5">
+                <h2 class="text-center mb-4 text-primary">Related Blox Fruits Tools</h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <a href="money-calculator.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-coins me-2"></i>Money Calculator
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="combo-builder.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-fist-raised me-2"></i>Combo Builder
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="../tools.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-tools me-2"></i>All Tools
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold text-primary">Blox Fruits Calculator</h5>
+                    <p>Your ultimate destination for Blox Fruits gaming tools, calculators, and strategic guides.</p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="fw-bold">Popular Tools</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="race-randomizer.html" class="text-light-50">Race Randomizer</a></li>
+                        <li><a href="fruit-spawn-timer.html" class="text-light-50">Fruit Timer</a></li>
+                        <li><a href="level-calculator.html" class="text-light-50">Level Calculator</a></li>
+                        <li><a href="trading-value-estimator.html" class="text-light-50">Trading Estimator</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="fw-bold">Pages</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="../about.html" class="text-light-50">About</a></li>
+                        <li><a href="../contact.html" class="text-light-50">Contact</a></li>
+                        <li><a href="../privacy-policy.html" class="text-light-50">Privacy</a></li>
+                        <li><a href="../terms-and-conditions.html" class="text-light-50">Terms</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold">Stay Updated</h6>
+                    <p>Get the latest tool updates and gaming strategies.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-primary me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-primary me-3"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-primary"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Blox Fruits Calculator. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../sitemap.xml" class="text-light-50 me-3">Sitemap</a>
+                    <a href="../robots.txt" class="text-light-50">Robots</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let raidTimers = [];
+        let timerInterval;
+
+        const raidColors = {
+            flame: 'danger',
+            ice: 'info',
+            quake: 'warning',
+            light: 'light',
+            dark: 'dark',
+            string: 'secondary',
+            rumble: 'primary',
+            magma: 'danger',
+            buddha: 'warning',
+            phoenix: 'danger',
+            spider: 'dark',
+            portal: 'primary'
+        };
+
+        function setCurrentTime() {
+            const now = new Date();
+            const localDateTime = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+            document.getElementById('completionTime').value = localDateTime;
+        }
+
+        function addRaidTimer() {
+            const raidType = document.getElementById('raidType').value;
+            const completionTime = document.getElementById('completionTime').value;
+
+            if (!completionTime) {
+                alert('Please select a completion time');
+                return;
+            }
+
+            const completionDate = new Date(completionTime);
+            const cooldownEndTime = new Date(completionDate.getTime() + (2 * 60 * 60 * 1000)); // 2 hours cooldown
+
+            const raidTimer = {
+                id: Date.now(),
+                type: raidType,
+                completionTime: completionDate,
+                cooldownEndTime: cooldownEndTime,
+                color: raidColors[raidType] || 'primary'
+            };
+
+            raidTimers.push(raidTimer);
+            updateRaidDisplay();
+            
+            // Clear form
+            document.getElementById('completionTime').value = '';
+        }
+
+        function removeRaidTimer(id) {
+            raidTimers = raidTimers.filter(timer => timer.id !== id);
+            updateRaidDisplay();
+        }
+
+        function clearAllTimers() {
+            if (confirm('Are you sure you want to clear all raid timers?')) {
+                raidTimers = [];
+                updateRaidDisplay();
+            }
+        }
+
+        function updateRaidDisplay() {
+            const container = document.getElementById('raidTimers');
+            
+            if (raidTimers.length === 0) {
+                container.innerHTML = `
+                    <div class="col-12 text-center text-muted">
+                        <i class="fas fa-info-circle me-2"></i>No active raid timers. Add a raid above to start tracking.
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = raidTimers.map(timer => {
+                const now = new Date();
+                const timeUntilCooldown = timer.cooldownEndTime.getTime() - now.getTime();
+                const isReady = timeUntilCooldown <= 0;
+                
+                let timeDisplay;
+                if (isReady) {
+                    timeDisplay = '<span class="text-success fw-bold">READY!</span>';
+                } else {
+                    const hours = Math.floor(timeUntilCooldown / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeUntilCooldown % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeUntilCooldown % (1000 * 60)) / 1000);
+                    timeDisplay = `${hours}h ${minutes}m ${seconds}s`;
+                }
+
+                return `
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-${timer.color}">
+                            <div class="card-header bg-${timer.color} text-white">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6 class="mb-0">${timer.type.charAt(0).toUpperCase() + timer.type.slice(1)} Raid</h6>
+                                    <button class="btn btn-sm btn-outline-light" onclick="removeRaidTimer(${timer.id})">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="h5 mb-2">${timeDisplay}</div>
+                                <small class="text-muted">
+                                    Completed: ${timer.completionTime.toLocaleString()}<br>
+                                    Ready: ${timer.cooldownEndTime.toLocaleString()}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function startTimerUpdates() {
+            timerInterval = setInterval(updateRaidDisplay, 1000);
+        }
+
+        // Event listeners
+        document.getElementById('addRaidBtn').addEventListener('click', addRaidTimer);
+
+        // Initialize
+        setCurrentTime();
+        startTimerUpdates();
+    </script>
+        <script src="../script.js"></script>
+
+</body>
+</html>

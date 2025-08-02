@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blox Fruits Sea Events Countdown - Track Limited Time Events</title>
+    <meta name="description" content="Never miss Blox Fruits sea events and special occasions. Track upcoming events, limited-time rewards, and exclusive content with our countdown timer tool.">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Blox Fruits Sea Events Countdown">
+    <meta property="og:description" content="Track upcoming sea events and special occasions. Never miss limited-time rewards and bonuses.">
+    <meta property="og:type" content="website">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="../style.css" rel="stylesheet" type="text/css" />
+    <link rel="canonical" href="https://bloxfruitscalculator.site/tools/sea-events-countdown.html">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <i class="fas fa-calculator text-warning me-2"></i>Blox Fruits Calculator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../tools.html">Tools</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../blogs.html">Guides</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+
+      <div id="header-placeholder"></div>
+
+
+    <!-- Main Content -->
+    <main class="hero-section">
+        <div class="container">
+            <div class="calculator-container">
+                <div class="calculator-header">
+                    <h1><i class="fas fa-calendar-alt text-primary me-3"></i>Sea Events Countdown</h1>
+                    <p class="lead">Track upcoming Blox Fruits sea events, special occasions, and limited-time content. Never miss exclusive rewards and bonuses.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label for="eventType" class="form-label"><i class="fas fa-star me-2"></i>Event Type</label>
+                            <select class="form-control" id="eventType">
+                                <option value="double-exp">Double EXP Weekend</option>
+                                <option value="raid-bonus">Raid Fragment Bonus</option>
+                                <option value="special-boss">Special Boss Event</option>
+                                <option value="fruit-rates">Increased Fruit Rates</option>
+                                <option value="sea-beast">Sea Beast Event</option>
+                                <option value="update-release">Update Release</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="customDate" class="form-label"><i class="fas fa-clock me-2"></i>Set Custom Event Date</label>
+                            <input type="datetime-local" class="form-control" id="customDate">
+                        </div>
+
+                        <button onclick="startCountdown()" class="btn btn-primary btn-lg w-100 mb-3">
+                            <i class="fas fa-play me-2"></i>Start Countdown
+                        </button>
+
+                        <button onclick="resetCountdown()" class="btn btn-outline-secondary w-100">
+                            <i class="fas fa-refresh me-2"></i>Reset Timer
+                        </button>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div id="countdownDisplay" class="result-display">
+                            <h4><i class="fas fa-hourglass-half me-2"></i>Next Event Countdown</h4>
+                            <div id="eventName" class="mb-3">Select an event to begin countdown</div>
+                            <div id="timeRemaining" class="display-4">00:00:00:00</div>
+                            <small class="text-muted">Days : Hours : Minutes : Seconds</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Events -->
+                <div class="mt-5">
+                    <h3 class="text-center mb-4"><i class="fas fa-fire text-danger me-2"></i>Current Active Events</h3>
+                    <div class="row g-3" id="activeEvents">
+                        <!-- Dynamic event cards will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Educational Content -->
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3><i class="fas fa-trophy text-warning me-2"></i>Event Reward Optimization</h3>
+                    <p>Maximize your rewards during limited-time events with strategic planning and efficient gameplay:</p>
+                    <p>Different events offer varying reward multipliers and exclusive content. Double EXP events are perfect for leveling alt characters, while fragment bonus events maximize raid farming efficiency.</p>
+                    <p>Plan your gameplay schedule around event timing to optimize reward collection. Some events stack with others, providing compound benefits for strategic players who time their activities correctly.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-calendar-check text-success me-2"></i>Event Schedule Tracking</h3>
+                    <p>Stay informed about upcoming events and plan your gaming sessions for maximum efficiency:</p>
+                    <p>Most Blox Fruits events follow predictable patterns, often occurring on weekends or during holiday periods. Regular updates and community announcements help predict upcoming special events.</p>
+                    <p>Use countdown timers to prepare for events in advance. Stock up on necessary items, clear your schedule, and coordinate with friends to maximize event participation and reward collection.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-bell text-info me-2"></i>Event Notification System</h3>
+                    <p>Set up alerts and reminders to never miss important sea events and limited-time opportunities:</p>
+                    <p>Enable browser notifications and bookmark this countdown tool to receive timely alerts about upcoming events. Set multiple reminders for preparation time and event start.</p>
+                    <p>Join community Discord servers and follow official social media channels for real-time event announcements and last-minute changes to event schedules.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3><i class="fas fa-users text-primary me-2"></i>Community Event Participation</h3>
+                    <p>Enhance your event experience through community coordination and group participation strategies:</p>
+                    <p>Many events are more rewarding when participated in with groups. Coordinate with friends and community members to maximize efficiency during raid bonus events or special boss encounters.</p>
+                    <p>Share event information and coordinate timing with your gaming community to ensure everyone can participate in limited-time opportunities and exclusive reward windows.</p>
+                </div>
+            </div>
+
+            <!-- Related Tools -->
+            <section class="mt-5">
+                <h2 class="text-center mb-4 text-primary">Related Blox Fruits Tools</h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <a href="raid-timer.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-shield-alt me-2"></i>Raid Timer
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="fruit-spawn-timer.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-clock me-2"></i>Fruit Timer
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="../tools.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-tools me-2"></i>All Tools
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold text-primary">Blox Fruits Calculator</h5>
+                    <p>Your ultimate destination for Blox Fruits gaming tools, calculators, and strategic guides.</p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="fw-bold">Popular Tools</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="race-randomizer.html" class="text-light-50">Race Randomizer</a></li>
+                        <li><a href="fruit-spawn-timer.html" class="text-light-50">Fruit Timer</a></li>
+                        <li><a href="level-calculator.html" class="text-light-50">Level Calculator</a></li>
+                        <li><a href="trading-value-estimator.html" class="text-light-50">Trading Estimator</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="fw-bold">Pages</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="../about.html" class="text-light-50">About</a></li>
+                        <li><a href="../contact.html" class="text-light-50">Contact</a></li>
+                        <li><a href="../privacy-policy.html" class="text-light-50">Privacy</a></li>
+                        <li><a href="../terms-and-conditions.html" class="text-light-50">Terms</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold">Stay Updated</h6>
+                    <p>Get the latest tool updates and gaming strategies.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-primary me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-primary me-3"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-primary"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Blox Fruits Calculator. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../sitemap.xml" class="text-light-50 me-3">Sitemap</a>
+                    <a href="../robots.txt" class="text-light-50">Robots</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let countdownInterval;
+
+        function startCountdown() {
+            const eventType = document.getElementById('eventType').value;
+            const customDate = document.getElementById('customDate').value;
+            
+            let targetDate;
+            if (customDate) {
+                targetDate = new Date(customDate);
+            } else {
+                // Default next weekend for demo
+                targetDate = new Date();
+                targetDate.setDate(targetDate.getDate() + (6 - targetDate.getDay()));
+                targetDate.setHours(12, 0, 0, 0);
+            }
+            
+            document.getElementById('eventName').textContent = getEventName(eventType);
+            
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+            }
+            
+            countdownInterval = setInterval(() => updateCountdown(targetDate), 1000);
+            updateCountdown(targetDate);
+        }
+
+        function updateCountdown(targetDate) {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            
+            if (distance < 0) {
+                document.getElementById('timeRemaining').textContent = 'EVENT STARTED!';
+                clearInterval(countdownInterval);
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('timeRemaining').textContent = 
+                `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function resetCountdown() {
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+            }
+            document.getElementById('timeRemaining').textContent = '00:00:00:00';
+            document.getElementById('eventName').textContent = 'Select an event to begin countdown';
+        }
+
+        function getEventName(eventType) {
+            const names = {
+                'double-exp': '2x EXP Weekend Event',
+                'raid-bonus': 'Fragment Bonus Event',
+                'special-boss': 'Special Boss Encounter',
+                'fruit-rates': 'Legendary Fruit Boost',
+                'sea-beast': 'Sea Beast Invasion',
+                'update-release': 'Major Update Release'
+            };
+            return names[eventType] || 'Special Event';
+        }
+
+        // Load active events on page load
+        window.onload = function() {
+            loadActiveEvents();
+        };
+
+        function loadActiveEvents() {
+            const activeEventsDiv = document.getElementById('activeEvents');
+            const mockEvents = [
+                { name: '2x EXP Weekend', status: 'Active', timeLeft: '1 day 12 hours' },
+                { name: 'Fragment Bonus', status: 'Coming Soon', timeLeft: '3 days 6 hours' }
+            ];
+            
+            activeEventsDiv.innerHTML = mockEvents.map(event => `
+                <div class="col-md-6">
+                    <div class="tool-card">
+                        <h5>${event.name}</h5>
+                        <p><span class="badge ${event.status === 'Active' ? 'bg-success' : 'bg-warning'}">${event.status}</span></p>
+                        <small>${event.timeLeft} remaining</small>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+        <script src="../script.js"></script>
+
+</body>
+</html>
