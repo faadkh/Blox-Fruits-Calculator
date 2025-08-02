@@ -1,4 +1,4 @@
-fetch("header.html")
+fetch("/Blox-Fruits-Calculator/header.html")
   .then(res => {
     if (!res.ok) throw new Error("Failed to load header");
     return res.text();
