@@ -25,6 +25,7 @@ fetch("/Blox-Fruits-Calculator/header.html")
 
 
 
+
 // Global JavaScript for Blox Fruits Calculator
 document.addEventListener('DOMContentLoaded', function() {
     // Smooth scrolling for anchor links
