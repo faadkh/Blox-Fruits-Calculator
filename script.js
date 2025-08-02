@@ -1,4 +1,4 @@
-fetch("/header.html")
+fetch("header.html")
   .then(res => {
     if (!res.ok) throw new Error("Failed to load header");
     return res.text();
@@ -7,6 +7,7 @@ fetch("/header.html")
     document.getElementById("header-placeholder").innerHTML = data;
   })
   .catch(err => console.error("Header load failed:", err));
+
 
 
 
